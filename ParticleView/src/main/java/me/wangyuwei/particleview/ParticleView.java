@@ -113,6 +113,14 @@ public class ParticleView extends View {
 
     }
 
+    public void clear() {
+        mSpreadWidth = 0;
+        mHostRectWidth = 0;
+        mParticleTextX = 0;
+        mHostTextX = 0;
+        mStatus = STATUS_MOTIONLESS;
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -289,6 +297,7 @@ public class ParticleView extends View {
     }
 
     public void startAnim() {
+        clear();
         post(new Runnable() {
             @Override
             public void run() {

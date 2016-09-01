@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import me.wangyuwei.particleview.ParticleView;
 
@@ -25,12 +26,20 @@ public class TestActivity extends AppCompatActivity {
 
         mPvGithub.startAnim();
 
-        mPvGithub.setOnParticleAnimListener(new ParticleView.ParticleAnimListener() {
+        mPvGithub.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAnimationEnd() {
+            public void onClick(View v) {
+                mPvGithub.startAnim();
+            }
+        });
+
+        mPvGithub.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
                 Intent intent = new Intent(TestActivity.this, MainActivity.class);
                 TestActivity.this.startActivity(intent);
                 finish();
+                return true;
             }
         });
 
